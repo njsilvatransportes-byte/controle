@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NJTransportes | Gestão</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main id="auth-view" class="auth-shell">
+      <section class="brand-panel">
+        <div class="brand"><span class="brand-mark">NJ</span><span>NJTransportes</span></div>
+        <div>
+          <p class="eyebrow">GESTÃO OPERACIONAL</p>
+          <h1>Transporte organizado, operação em movimento.</h1>
+          <p class="brand-copy">Centralize os cadastros da sua empresa em um só lugar.</p>
+        </div>
+      </section>
+      <section class="auth-panel">
+        <div class="auth-card">
+          <div class="auth-heading"><p class="eyebrow">BEM-VINDO</p><h2 id="auth-title">Acesse sua conta</h2><p id="auth-subtitle">Entre para continuar na gestão NJTransportes.</p></div>
+          <form id="login-form" class="form-stack">
+            <label>E-mail<input type="email" id="login-email" placeholder="voce@empresa.com" required /></label>
+            <label>Senha<input type="password" id="login-password" placeholder="Sua senha" required minlength="4" /></label>
+            <p class="form-error" id="login-error"></p>
+            <button class="button button-primary" type="submit">Entrar</button>
+          </form>
+          <form id="register-form" class="form-stack hidden">
+            <label>Nome completo<input type="text" id="register-name" placeholder="Seu nome" required /></label>
+            <label>E-mail<input type="email" id="register-email" placeholder="voce@empresa.com" required /></label>
+            <label>Senha<input type="password" id="register-password" placeholder="Mínimo de 4 caracteres" required minlength="4" /></label>
+            <p class="form-error" id="register-error"></p>
+            <button class="button button-primary" type="submit">Criar conta</button>
+          </form>
+          <p class="auth-switch" id="auth-switch">Ainda não tem uma conta? <button type="button" data-auth-mode="register">Cadastre-se</button></p>
+        </div>
+      </section>
+    </main>
+
+    <main id="app-view" class="app-shell hidden">
+      <aside id="sidebar" class="sidebar">
+        <div class="sidebar-top"><div class="brand"><span class="brand-mark">NJ</span><span class="brand-name">NJTransportes</span></div><button id="sidebar-toggle" class="icon-button" aria-label="Recolher menu">☰</button></div>
+        <nav><a class="nav-link active" href="#motoristas" data-view="drivers"><span>◫</span><span class="nav-label">Motoristas</span></a><a class="nav-link" href="#veiculos" data-view="vehicles"><span>▣</span><span class="nav-label">Veículos</span></a><a class="nav-link" href="#clientes" data-view="clients"><span>⌖</span><span class="nav-label">Clientes</span></a></nav>
+        <div class="sidebar-footer"><div class="user-mini"><span class="avatar" id="avatar">N</span><span class="nav-label" id="user-name">Usuário</span></div><button id="logout-button" class="logout"><span>↪</span><span class="nav-label">Sair</span></button></div>
+      </aside>
+      <section class="workspace">
+        <header class="topbar"><button id="mobile-menu" class="icon-button mobile-only" aria-label="Abrir menu">☰</button><div><p class="eyebrow">CADASTROS</p><h1 id="page-title">Motoristas</h1></div><button id="new-item-button" class="button button-primary">+ Novo motorista</button></header>
+        <div class="content">
+          <section id="drivers-view" class="data-view"><section class="stats"><article><span>Total de motoristas</span><strong id="total-drivers">0</strong></article><article><span>Ativos</span><strong id="active-drivers">0</strong></article><article><span>Documentação pendente</span><strong id="pending-drivers">0</strong></article></section><section class="card"><div class="card-header"><div><h2>Cadastro de motoristas</h2><p>Gerencie os profissionais vinculados à NJTransportes.</p></div><label class="search-field">⌕ <input id="driver-search" type="search" placeholder="Buscar por nome ou CPF" /></label></div><div class="table-wrap"><table><thead><tr><th>Motorista</th><th>CPF</th><th>CNH</th><th>Categoria</th><th>Status</th><th></th></tr></thead><tbody id="drivers-table"></tbody></table></div><div id="drivers-empty" class="empty-state"><div>🚚</div><h3>Nenhum motorista cadastrado</h3><p>Comece adicionando o primeiro motorista da empresa.</p><button class="button button-primary" data-new="driver">+ Cadastrar motorista</button></div></section></section><section id="vehicles-view" class="data-view hidden"><section class="stats"><article><span>Total de veículos</span><strong id="total-vehicles">0</strong></article><article><span>Em operação</span><strong id="active-vehicles">0</strong></article><article><span>Em manutenção</span><strong id="maintenance-vehicles">0</strong></article></section><section class="card"><div class="card-header"><div><h2>Cadastro de veículos</h2><p>Controle a frota vinculada à NJTransportes.</p></div><label class="search-field">⌕ <input id="vehicle-search" type="search" placeholder="Buscar por placa ou modelo" /></label></div><div class="table-wrap"><table><thead><tr><th>Placa</th><th>Veículo</th><th>Tipo</th><th>Ano</th><th>Status</th><th></th></tr></thead><tbody id="vehicles-table"></tbody></table></div><div id="vehicles-empty" class="empty-state"><div>🚛</div><h3>Nenhum veículo cadastrado</h3><p>Comece adicionando o primeiro veículo da frota.</p><button class="button button-primary" data-new="vehicle">+ Cadastrar veículo</button></div></section></section>
+          <section id="clients-view" class="data-view hidden"><section class="card"><div class="card-header"><div><h2>Cadastro de clientes</h2><p>Destinos para roteirização de entregas.</p></div><button class="button button-primary" data-new="client">+ Novo cliente</button></div><div class="table-wrap"><table><thead><tr><th>Cliente</th><th>Endereço</th><th>Cidade/UF</th><th>Telefone</th><th></th></tr></thead><tbody id="clients-table"></tbody></table></div><div id="clients-empty" class="empty-state"><div>📍</div><h3>Nenhum cliente cadastrado</h3><p>Adicione os destinos das entregas.</p><button class="button button-primary" data-new="client">+ Cadastrar cliente</button></div></section></section>
+        </div>
+      </section>
+    </main>
+    <div id="modal-backdrop" class="modal-backdrop hidden"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-header"><div><p class="eyebrow">CADASTRO</p><h2 id="modal-title">Novo cadastro</h2></div><button id="close-modal" class="icon-button" aria-label="Fechar">×</button></div><form id="record-form"><div id="modal-fields" class="form-grid"></div><p class="form-error" id="record-error"></p><div class="modal-actions"><button id="cancel-modal" class="button button-secondary" type="button">Cancelar</button><button class="button button-primary" type="submit">Salvar</button></div></form></section></div>
+    <script src="app.js"></script>
+  </body>
+</html>
